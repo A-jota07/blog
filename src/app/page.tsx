@@ -1,7 +1,8 @@
 import { Container } from '@/components/Container';
 import { Header } from '@/components/Header';
 import { PostCoverImage } from '@/components/PostCoverImage';
-import { PostHeanding } from '@/components/PostHeading';
+import { PostHeading } from '@/components/PostHeading';
+import { PostsList } from '@/components/PostsList';
 import { SpinLoader } from '@/components/spinLoader';
 import { Suspense } from 'react';
 
@@ -13,7 +14,7 @@ export default async function HomePage() {
          <section className='grid grid-cols-1 gap-8 mb-16 sm:grid-cols-2 group'>
             <PostCoverImage
                linkProps={{
-                  href: '/post/name',
+                  href: '/post/',
                }}
                imageProps={{
                   width: 1200,
@@ -23,21 +24,31 @@ export default async function HomePage() {
                   priority: true,
                }}
             />
-            <div className='flex flex-col sm:justify-center'>
-               <time className='text-slate-600 text-sm' dateTime='2026-04-09'>
-                  09/04/2026 10:00
+            <div className='flex flex-col gap-4 sm:justify-center'>
+               <time
+                  className='text-slate-600 block text-sm/tight'
+                  dateTime='2025-04-20'
+               >
+                  20/04/2025 10:00
                </time>
-               <PostHeanding as='h1' url='#'>
-                  Lorem ipsum dolor sit.
-               </PostHeanding>
-               Lorem ipsum dolor sit amet consectetur adipisicing elit. In velit
-               dolorem est dolor porro, doloribus neque, quidem mollitia
-               doloremque, ad perspiciatis fugiat. Rerum, vel ex? Impedit ullam
-               harum blanditiis mollitia?
+
+               <PostHeading as='h1' url='#'>
+                  Rerum, vel ex? Impedit ullam harum blanditiis
+               </PostHeading>
+
+               <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. In
+                  velit dolorem est dolor porro, doloribus neque, quidem
+                  mollitia doloremque, ad perspiciatis fugiat. Rerum, vel ex?
+                  Impedit ullam harum blanditiis mollitia?
+               </p>
             </div>
          </section>
 
-         <Suspense fallback={<SpinLoader />}>{/* <PostsList /> */}</Suspense>
+         <Suspense fallback={<SpinLoader />}>
+            <PostsList />
+         </Suspense>
+
          <footer>
             <p className='text-6xl font-bold text-center py-8'>Footer</p>
          </footer>
