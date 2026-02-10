@@ -28,7 +28,9 @@ export default async function PostSlugPage({ params }: PostSlugPageProps) {
 
    if (!post) notFound();
 
-   <Suspense fallback={<SpinLoader className='min-h-20 mb-16' />}>
-      <SinglePost slug={slug} />
-    </Suspense>
+   return (
+      <Suspense fallback={<SpinLoader className='min-h-20 mb-16' />}>
+         <SinglePost slug={slug} />
+      </Suspense>
+   );
 }
