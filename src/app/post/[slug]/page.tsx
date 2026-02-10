@@ -12,9 +12,7 @@ export default async function PostPage({ params }: PostSlugPageProps) {
 
    try {
       post = await findBySlugCache(slug);
-   } catch {
-      post = undefined;
-   }
+   } catch {}
 
    if (!post) notFound();
 
