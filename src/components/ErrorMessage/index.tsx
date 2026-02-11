@@ -1,3 +1,5 @@
+'use Client';
+
 import clsx from 'clsx';
 
 type ErrorMessageProps = {
