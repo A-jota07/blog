@@ -6,9 +6,9 @@ export const findAllPublicPosts = cache(
 );
 
 export const findBySlugCached = cache(
-   async (slug: string) => await postRepository.findBySlug(slug),
+   async (slug: string) => await postRepository.findBySlugPublic(slug),
 );
 
 export const findByIdCache = cache(
-   async (id: string) => await postRepository.findBySlug(id),
+   async (id: string) => await postRepository.findBySlugPublic(id),
 );
