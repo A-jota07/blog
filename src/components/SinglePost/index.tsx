@@ -1,7 +1,7 @@
-import { findBySlugCached } from '@/lib/post/queries';
+import { findPostBySlugCached } from '@/lib/post/queries/queries';
 import Image from 'next/image';
-import { PostHeading } from '../PostHeading';
 import { PostDate } from '../PostDate';
+import { PostHeading } from '../PostHeading';
 import { SafeMarkdown } from '../SafeMarkdown';
 
 type SinglePostProps = {
@@ -9,7 +9,7 @@ type SinglePostProps = {
 };
 
 export async function SinglePost({ slug }: SinglePostProps) {
-   const post = await findBySlugCached(slug);
+   const post = await findPostBySlugCached(slug);
 
    return (
       <article className='mb-16'>
