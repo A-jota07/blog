@@ -1,5 +1,7 @@
 'use server';
 
-export async function deletePostAdction(formData: FormData) {
-   const id = formData.get('id');
+import { logColor } from '@/utils/log-color';
+
+export async function deletePostAdction(id: string) {
+   logColor('' + id);
 }
