@@ -1,9 +1,19 @@
 import { findAllPublicPosts } from '@/lib/post/queries/public';
 import { PostCoverImage } from '../PostCoverImage';
 import { PostSummary } from '../PostSummary';
+import ErrorMessage from '../ErrorMessage';
 
 export async function PostFeatured() {
    const posts = await findAllPublicPosts();
+
+   if (posts.length <= 0)
+      return (
+         <ErrorMessage
+            contentTitle='Ops!😅'
+            content='Sem posts por aqui ainda'
+         />
+      );
+
    const post = posts[0];
 
    const postLink = `/posts/${post.slug}`;
