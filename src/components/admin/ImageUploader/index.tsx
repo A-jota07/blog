@@ -1,6 +1,7 @@
 'use client';
 
 import { Button } from '@/components/Button';
+import clsx from 'clsx';
 import { ImageUpIcon } from 'lucide-react';
 import { useRef } from 'react';
 
@@ -18,7 +19,13 @@ export function ImageUploader() {
          <Button
             onClick={handleChooseFile}
             type='button'
-            className='self-start'
+            className={clsx(
+               'bg-slate-400 text-slate-800 ',
+               'flex flex-wrap items-center justify-start',
+               'w-fit gap-2 px-3 py-2',
+               'text-sm rounded-md cursor-pointer hover:bg-slate-500',
+               'transition-transform duration-300 hover:scale-110',
+            )}
          >
             <ImageUpIcon />
             Enviar uma imagem

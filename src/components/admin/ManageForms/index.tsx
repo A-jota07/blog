@@ -23,6 +23,8 @@ export function ManagePostForm() {
                placeholder='Digite seu sobrenome'
             />
 
+            <ImageUploader />
+
             <MarkdownEditor
                labelText='Conteúdo'
                disabled={false}
@@ -30,8 +32,6 @@ export function ManagePostForm() {
                value={contentValue}
                setValue={setContentValue}
             />
-
-            <ImageUploader />
 
             <InputCheckbox labelText='Sobrenome' />
 
