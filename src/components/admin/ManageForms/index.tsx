@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@/components/Button';
-import { ImageUploader } from '@/components/ImageUploader';
+import { ImageUploader } from '@/components/admin/ImageUploader';
 import { InputCheckbox } from '@/components/InputCheckbox';
 import { InputText } from '@/components/InputText';
 import { MarkdownEditor } from '@/components/MarkdownEditor';

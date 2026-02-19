@@ -1,7 +1,4 @@
-import { Button } from '@/components/Button';
-import { InputCheckbox } from '@/components/InputCheckbox';
-import { InputText } from '@/components/InputText';
-import { ManagePostForm } from '@/components/ManageForms';
+import { ManagePostForm } from '@/components/admin/ManageForms';
 
 export const dynamic = 'force-static';
 
