@@ -1,11 +1,11 @@
 'use client';
 
+import { Button } from '@/components/Button';
+import { ImageUploader } from '@/components/ImageUploader';
+import { InputCheckbox } from '@/components/InputCheckbox';
+import { InputText } from '@/components/InputText';
+import { MarkdownEditor } from '@/components/MarkdownEditor';
 import { useState } from 'react';
-import { Button } from '../Button';
-import { InputCheckbox } from '../InputCheckbox';
-import { InputText } from '../InputText';
-import { MarkdownEditor } from '../MarkdownEditor';
-import { ImageUploader } from '../ImageUploader';
 
 export function ManagePostForm() {
    const [contentValue, setContentValue] = useState('');
