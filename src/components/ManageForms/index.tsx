@@ -5,6 +5,7 @@ import { Button } from '../Button';
 import { InputCheckbox } from '../InputCheckbox';
 import { InputText } from '../InputText';
 import { MarkdownEditor } from '../MarkdownEditor';
+import { ImageUploader } from '../ImageUploader';
 
 export function ManagePostForm() {
    const [contentValue, setContentValue] = useState('');
@@ -22,8 +23,6 @@ export function ManagePostForm() {
                placeholder='Digite seu sobrenome'
             />
 
-            <InputCheckbox labelText='Sobrenome' />
-
             <MarkdownEditor
                labelText='Conteúdo'
                disabled={false}
@@ -31,6 +30,10 @@ export function ManagePostForm() {
                value={contentValue}
                setValue={setContentValue}
             />
+
+            <ImageUploader />
+
+            <InputCheckbox labelText='Sobrenome' />
 
             <div className='mt-4'>
                <Button type='submit'>Enviar</Button>
