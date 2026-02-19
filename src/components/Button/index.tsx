@@ -16,8 +16,8 @@ export function Button({
 }: ButtonProps) {
    const buttonVariant: Record<ButtonVariants, string> = {
       default: clsx('bg-blue-600 hover:bg-blue-700 text-blue-100 '),
-      ghost: clsx('bg-slate-300 hover:bg-slate-400 text-slate-600 '),
-      danger: clsx('bg-red-500 hover:bg-red-700 text-red-100 '),
+      ghost: clsx('bg-slate-300 hover:bg-slate-400 text-slate-600'),
+      danger: clsx('bg-red-500 hover:bg-red-700 text-red-100'),
    };
 
    const buttonSizes: Record<ButtonSizes, string> = {
@@ -51,6 +51,7 @@ export function Button({
       'transition',
       'disabled:bg-slate-200 disabled:text-slate-400',
       'disabled:cursor-not-allowed',
+      'transition-transform duration-300 hover:scale-110',
    );
 
    return (
