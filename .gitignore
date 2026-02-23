@@ -3,6 +3,9 @@
 # database
 db.sqlite3
 
+# images
+uploads/
+
 # vscode
 /.vscode
 
