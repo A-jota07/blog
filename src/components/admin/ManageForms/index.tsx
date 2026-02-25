@@ -1,13 +1,13 @@
 'use client';
 
-import { Button } from '@/components/Button';
+import { createPostAction } from '@/actions/post/create-post-action';
 import { ImageUploader } from '@/components/admin/ImageUploader';
+import { Button } from '@/components/Button';
 import { InputCheckbox } from '@/components/InputCheckbox';
 import { InputText } from '@/components/InputText';
 import { MarkdownEditor } from '@/components/MarkdownEditor';
-import { useActionState, useEffect, useState } from 'react';
 import { makePartialPublicPost, PublicPost } from '@/dto/post/dto';
-import { createPostAction } from '@/actions/post/create-post-action';
+import { useActionState, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
 type ManagePostFormProps = {
@@ -34,6 +34,9 @@ export function ManagePostForm({ publicPost }: ManagePostFormProps) {
 
    const { formState } = state;
    const [contentValue, setContentValue] = useState(publicPost?.content || '');
+   // Posts novos (sem ID) começam como publicados
+   const isNewPost = !publicPost?.id;
+   const defaultPublished = isNewPost ? true : formState.published;
 
    return (
       <form action={action} className='mb-16'>
@@ -101,7 +104,7 @@ export function ManagePostForm({ publicPost }: ManagePostFormProps) {
                labelText='Publicar?'
                name='published'
                type='checkbox'
-               defaultChecked={formState.published}
+               defaultChecked={defaultPublished}
             />
 
             <div className='mt-4'>
