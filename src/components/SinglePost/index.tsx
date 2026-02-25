@@ -1,7 +1,7 @@
 import { findPublicPostBySlugCached } from '@/lib/post/queries/public';
 import Image from 'next/image';
-import { PostDate } from '../PostDate';
 import { PostHeading } from '../PostHeading';
+import { PostDate } from '../PostDate';
 import { SafeMarkdown } from '../SafeMarkdown';
 
 type SinglePostProps = {
@@ -15,7 +15,7 @@ export async function SinglePost({ slug }: SinglePostProps) {
       <article className='mb-16'>
          <header className='group flex flex-col gap-4 mb-4'>
             <Image
-               className='rounded-xl '
+               className='rounded-xl'
                src={post.coverImageUrl}
                width={1200}
                height={720}
@@ -29,7 +29,7 @@ export async function SinglePost({ slug }: SinglePostProps) {
             </p>
          </header>
 
-         <p className='text-xl mb-8 text-slate-600'>{post.excerpt}</p>
+         <p className='text-xl mb-4 text-slate-600'>{post.excerpt}</p>
 
          <SafeMarkdown markdown={post.content} />
       </article>

@@ -2,7 +2,6 @@ import { SinglePost } from '@/components/SinglePost';
 import { SpinLoader } from '@/components/spinLoader';
 import { findPublicPostBySlugCached } from '@/lib/post/queries/public';
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 
 export const dynamic = 'force-static';
@@ -25,10 +24,6 @@ export async function generateMetadata({
 
 export default async function PostSlugPage({ params }: PostSlugPageProps) {
    const { slug } = await params;
-
-   const post = await findPublicPostBySlugCached(slug).catch(() => undefined);
-
-   if (!post) notFound();
 
    return (
       <Suspense fallback={<SpinLoader className='min-h-20 mb-16' />}>

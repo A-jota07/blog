@@ -16,20 +16,31 @@ export async function deletePostAdction(id: string) {
       };
    }
 
-   const post = await postRepository.findById(id).catch(() => undefined);
+   let post;
+   try {
+      post = await postRepository.delete(id);
+   } catch (e: unknown) {
+      if (e instanceof Error) {
+         return {
+            error: e.message,
+         };
+      }
+      if (!post) {
+         return {
+            error: 'Erro desconhecido',
+         };
+      }
 
-   if (!post) {
+      await drizzleDb.delete(postsTable).where(eq(postsTable.id, id));
+
+      // @ts-expect-error revalidateTag recebe apenas um parâmetro
+      revalidateTag('posts');
+
+      // @ts-expect-error revalidateTag recebe apenas um parâmetro
+      revalidateTag(`post-${post.slug}`);
+
       return {
-         error: 'post não existe',
+         error: '',
       };
    }
-
-   await drizzleDb.delete(postsTable).where(eq(postsTable.id, id));
-
-   revalidateTag('posts', 'max');
-   revalidateTag(`post-${post.slug}`, 'max');
-
-   return {
-      error: '',
-   };
 }
