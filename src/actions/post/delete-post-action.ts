@@ -2,11 +2,20 @@
 
 import { drizzleDb } from '@/db/drizzle';
 import { postsTable } from '@/db/drizzle/schemas';
+import { verifyLoginSession } from '@/lib/login/manage-login';
 import { postRepository } from '@/repositories/post';
 import { eq } from 'drizzle-orm';
 import { revalidateTag } from 'next/cache';
 
 export async function deletePostAdction(id: string) {
+   const isAuthenticated = await verifyLoginSession();
+
+   if (!isAuthenticated) {
+      return {
+         errors: 'Faça login novamente.',
+      };
+   }
+
    if (!id || typeof id !== 'string') {
       return {
          error: 'Dados inválidos',
