@@ -1,20 +1,24 @@
 'use client';
 
+import { logoutAction } from '@/actions/login/logout-action';
 import clsx from 'clsx';
 import {
    CircleXIcon,
    FileTextIcon,
+   HourglassIcon,
    HouseIcon,
+   LogOutIcon,
    MenuIcon,
    PlusIcon,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useTransition } from 'react';
 
 export function MenuAdmin() {
    const [isOpen, setIsOpen] = useState(false);
    const pathname = usePathname();
+   const [isPending, startTransition] = useTransition();
 
    useEffect(() => {
       // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -43,6 +47,14 @@ export function MenuAdmin() {
       'text-blue-200 italic',
       'sm:hidden',
    );
+
+   function handlelogout(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+      e.preventDefault();
+
+      startTransition(async () => {
+         await logoutAction();
+      });
+   }
 
    return (
       <nav className={navCalsses}>
@@ -78,6 +90,22 @@ export function MenuAdmin() {
             <PlusIcon />
             Criar post
          </Link>
+
+         <a onClick={handlelogout} href='#' className={linkClasses}>
+            {isPending && (
+               <>
+                  <HourglassIcon />
+                  Sair
+               </>
+            )}
+
+            {!isPending && (
+               <>
+                  <LogOutIcon />
+                  Sair
+               </>
+            )}
+         </a>
       </nav>
    );
 }
